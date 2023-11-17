@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Toggle from "../../../../../Utility/Toggle/Toggle";
 
 const Navbar = () => {
   const navOptions = (
@@ -11,6 +12,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/order/salad">Order</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
       </li>
     </>
   );
@@ -50,7 +54,9 @@ const Navbar = () => {
       <div className="navbar-end">
         <a className="btn">Button</a>
       </div>
+      <Toggle></Toggle>
     </div>
+    
   );
 };
 
