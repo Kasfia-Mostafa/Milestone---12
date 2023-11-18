@@ -9,6 +9,9 @@ import { HelmetProvider } from "react-helmet-async";
 import Order from "./Pages/Order/Order/Order.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import AuthProviders from "./Providers/AuthProviders.jsx";
+import SignUp from "./Pages/SignUp/SignUp.jsx";
+import Secret from "./Pages/Secret/Secret.jsx";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,17 +34,25 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
+      {
+        path: "signUp",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "secret",
+        element: <PrivateRoutes><Secret></Secret></PrivateRoutes>,
+      },
     ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-     <AuthProviders>
-    <HelmetProvider>
-     <div className="max-w-screen-xl mx-auto">
-        <RouterProvider router={router} />
-      </div>
-    </HelmetProvider>
-     </AuthProviders>
+    <AuthProviders>
+      <HelmetProvider>
+        <div className="max-w-screen-xl mx-auto">
+          <RouterProvider router={router} />
+        </div>
+      </HelmetProvider>
+    </AuthProviders>
   </React.StrictMode>
 );
