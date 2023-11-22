@@ -22,6 +22,7 @@ import AllUsers from "./Pages/AllUsers/Allusers.jsx";
 import AddItems from "./Pages/DashBoard/AddItems/AddItems.jsx";
 import AdminRoutes from "./Pages/AdminRoutes/AdminRoutes.jsx";
 import MangeItem from "./Pages/MangeItem/MangeItem.jsx";
+import UpdateItem from "./Pages/UpdateItem/UpdateItem.jsx";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +81,11 @@ const router = createBrowserRouter([
       {
         path: 'manageItems',
         element:<AdminRoutes><MangeItem></MangeItem></AdminRoutes>
+      },
+      {
+        path: 'updateItem/:id',
+        element:<AdminRoutes><UpdateItem></UpdateItem></AdminRoutes>,
+        loader:({params})=> fetch(`http://localhost:5000/menu/${params.id}`)
       }
     ]
   }

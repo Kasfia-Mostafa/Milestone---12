@@ -4,11 +4,13 @@ import useMenu from "../../Hooks/UseMenu";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const MangeItem = () => {
-  const [menu] = useMenu();
+  const [menu, loading, refetch] = useMenu();
   const axiosSecure = useAxiosSecure();
   const handleDelete = (item) => {
+    console.log(item);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -17,15 +19,20 @@ const MangeItem = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then(async(result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosSecure.delete(`/menu/${item._id}`)
-        console.log(res.data)
-        // Swal.fire(
-        //   'Deleted!',
-        //   'Your file has been deleted.',
-        //   'success'
-        // )
+        const res = await axiosSecure.delete(`/menu/${item._id}`);
+        console.log(res.data);
+        if (res.data.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${item.name} has been deleted`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       }
     });
   };
@@ -70,13 +77,16 @@ const MangeItem = () => {
                   <td>{item.name}</td>
                   <td>${item.price}</td>
                   <td>
-                    <button className="btn btn-ghost  bg-orange-500">
-                      <FaEdit className="text-white "></FaEdit>
-                    </button>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                      {" "}
+                      <button className="btn btn-ghost  bg-orange-500">
+                        <FaEdit className="text-white "></FaEdit>
+                      </button>
+                    </Link>
                   </td>
                   <td>
                     <button
-                      onClick={() => handleDelete(item._id)}
+                      onClick={() => handleDelete(item)}
                       className="btn btn-ghost btn-xs"
                     >
                       <FaTrashAlt className="text-red-600 text-xl"></FaTrashAlt>
