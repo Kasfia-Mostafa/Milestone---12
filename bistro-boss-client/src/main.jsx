@@ -17,12 +17,14 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import DashBoard from "./Layout/DashBoard/DashBoard.jsx";
-import Cart from "./Pages/DashBoard/Cart/CArt.jsx";
 import AllUsers from "./Pages/AllUsers/Allusers.jsx";
 import AddItems from "./Pages/DashBoard/AddItems/AddItems.jsx";
 import AdminRoutes from "./Pages/AdminRoutes/AdminRoutes.jsx";
 import MangeItem from "./Pages/MangeItem/MangeItem.jsx";
 import UpdateItem from "./Pages/UpdateItem/UpdateItem.jsx";
+import Payment from "./Pages/DashBoard/Payment/Payment.jsx";
+import PaymentHistory from "./Pages/DashBoard/Payment/PaymentHistory/PaymentHistory.jsx";
+import Cart from "./Pages/DashBoard/Cart/Cart.jsx";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element:<Cart></Cart>
+      },
+      {
+        path: 'payment',
+        element:<Payment></Payment>
+      },
+      {
+        path: 'paymentHistory',
+        element:<PaymentHistory></PaymentHistory>
       },
       // admin routes
       {
