@@ -20,12 +20,12 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/secret">Secret</Link>
+        <Link to="/allProperties">All properties</Link>
       </li>
       <li>
         <Link to="/order/salad">Order</Link>
       </li>
-      <li>
+      <li>f
         <Link to='/dashboard/cart'>
           <button className="btn">
           <FaShoppingCart className="mr-2" />

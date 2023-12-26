@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaChessKing, FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
@@ -79,7 +79,7 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "Admin"
+                    <FaChessKing />
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
